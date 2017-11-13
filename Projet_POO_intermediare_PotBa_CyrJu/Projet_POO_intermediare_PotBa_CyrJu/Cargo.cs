@@ -8,5 +8,9 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
 {
     class Cargo
     {
+        public Cargo(int _quantiteTotale, Plutonium _pilePlutonium, Uranium _pileUranium, MetauxLourds _pileMetauxLourds, TerresContaminees _pileTerresContaminees, CombustiblesFossiles _pileCombustiblesFossiles) : base (_quantiteTotale)
+        {
+
+        }
     }
 }
