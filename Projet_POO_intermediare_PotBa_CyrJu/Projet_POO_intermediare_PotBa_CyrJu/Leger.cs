@@ -6,11 +6,36 @@ using System.Threading.Tasks;
 
 namespace Projet_POO_intermediare_PotBa_CyrJu
 {
-    class Leger : Vaisseaux
+    class Leger : IVaisseaux
     {
-        public Leger(Plutonium _pilePlutonium, Uranium _pileUranium, MetauxLourds _pileMetauxLourds, TerresContaminees _pileTerresContaminees, CombustiblesFossiles _pileCombustiblesFossiles, int _quantiteTotale = 108) : base (_quantiteTotale)
+        protected int capaciteTotale;
+        protected IMateriaux pileMateriaux;
+        protected IMateriaux suivant;
+        protected IMateriaux precedent;
+        public Leger()
         {
+            capaciteTotale = 108;
+        }
 
+        public int CapaciteTotale
+        {
+            get { return capaciteTotale; }
+            set { capaciteTotale = value; }
+        }
+        public IMateriaux PileMateriaux
+        {
+            get { return pileMateriaux; }
+            set { pileMateriaux = value; }
+        }
+        public IMateriaux Suivant
+        {
+            get { return suivant; }
+            set { suivant = value; }
+        }
+        public IMateriaux Precedent
+        {
+            get { return precedent; }
+            set { precedent = value; }
         }
     }
 }

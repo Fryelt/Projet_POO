@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Projet_POO_intermediare_PotBa_CyrJu
 {
-    class Materiaux : Pile
+    interface IMateriaux
     {
-        public Materiaux()
-        {
-
-        }
+        int tempsChargement { get; set; }
+        string nomMateriaux { get; set; }
+        IMateriaux suivant { get; set; }
     }
 }
