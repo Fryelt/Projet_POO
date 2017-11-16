@@ -8,9 +8,9 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
 {
     interface IVaisseaux
     {
-        int capaciteTotale { get; set; }
-        IMateriaux pileMateriaux { get; set; }
-        IMateriaux suivant { get; set; }
-        IMateriaux precedent { get; set; }
+        int CapaciteTotale { get; set; }
+        IMateriaux PileMateriaux { get; set; }
+        IMateriaux Suivant { get; set; }
+        IMateriaux Precedent { get; set; }
     }
 }
