@@ -8,31 +8,5 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
 {
     class Pile
     {
-
-        protected int tailleMax;
-        protected int cpt_Noeu;
-        protected IMateriaux ancre;
-
-        public Pile(int tailleMaxP)
-        {
-            tailleMax = tailleMaxP;
-            ancre = null;
-            cpt_Noeu = 0;
-        }
-
-        public void ViderPile()
-        {
-
-        }
-
-        public void AjouterPile()
-        {
-
-        }
-
-        public void SupprimerPile()
-        {
-
-        }
     }
 }
