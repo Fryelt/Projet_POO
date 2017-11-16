@@ -48,7 +48,12 @@
     <Compile Include="File.cs" />
     <Compile Include="Leger.cs" />
     <Compile Include="Liste.cs" />
+<<<<<<< HEAD
     <Compile Include="MétauxLourds.cs" />
+=======
+    <Compile Include="Materiaux.cs" />
+    <Compile Include="MetauxLourds.cs" />
+>>>>>>> Bajamin
     <Compile Include="Pile.cs" />
     <Compile Include="Plutonium.cs" />
     <Compile Include="Program.cs" />
