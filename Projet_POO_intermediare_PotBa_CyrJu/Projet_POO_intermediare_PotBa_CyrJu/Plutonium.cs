@@ -6,16 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projet_POO_intermediare_PotBa_CyrJu
 {
-<<<<<<< HEAD
     class Plutonium
     {
-=======
-    class Plutonium : Materiaux
-    {
-        public Plutonium()
-        {
-
-        }
->>>>>>> Bajamin
     }
 }
