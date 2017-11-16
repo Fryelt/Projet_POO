@@ -8,5 +8,9 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
 {
     class Materiaux : Pile
     {
+        public Materiaux()
+        {
+
+        }
     }
 }

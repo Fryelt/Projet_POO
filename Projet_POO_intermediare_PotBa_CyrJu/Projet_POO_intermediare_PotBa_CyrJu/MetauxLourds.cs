@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Projet_POO_intermediare_PotBa_CyrJu
 {
-    class MetauxLourds
+    class MetauxLourds : Materiaux
     {
+        public MetauxLourds()
+        {
+
+        }
     }
 }

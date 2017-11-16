@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Projet_POO_intermediare_PotBa_CyrJu
 {
-    class Cargo
+    class Cargo : Vaisseaux
     {
-        public Cargo(int _quantiteTotale, Plutonium _pilePlutonium, Uranium _pileUranium, MetauxLourds _pileMetauxLourds, TerresContaminees _pileTerresContaminees, CombustiblesFossiles _pileCombustiblesFossiles) : base (_quantiteTotale)
+        public Cargo(Plutonium _pilePlutonium, Uranium _pileUranium, MetauxLourds _pileMetauxLourds, TerresContaminees _pileTerresContaminees, CombustiblesFossiles _pileCombustiblesFossiles, int _quantiteTotale = 367) : base (_quantiteTotale)
         {
 
         }
