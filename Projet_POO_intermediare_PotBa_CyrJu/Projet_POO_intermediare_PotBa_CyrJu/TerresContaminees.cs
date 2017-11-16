@@ -6,30 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projet_POO_intermediare_PotBa_CyrJu
 {
-    class TerresContaminees : IMateriaux
+    class TerresContaminees
     {
-        private int _tempsChargement = 0;
-        private string _nomMateriaux = null;
-        private IMateriaux _suivant = null;
-        public TerresContaminees()
-        {
-
-        }
-
-        public int tempsChargement
-        {
-            get { return _tempsChargement; }
-            set { _tempsChargement = value; }
-        }
-        public string nomMateriaux
-        {
-            get { return _nomMateriaux; }
-            set { _nomMateriaux = value; }
-        }
-        public IMateriaux suivant
-        {
-            get { return _suivant; }
-            set { _suivant = value; }
-        }
     }
 }
