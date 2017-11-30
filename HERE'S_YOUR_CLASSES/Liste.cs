@@ -8,15 +8,42 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
 {
     class Liste
     {
-        CentreTri ancre = null;
-        CentreTri queud = null;
-        int cpt_noeud = 0;
+        private CentreTri ancre = null;
+        private CentreTri Queu = null;
+        private int cpt_noeud = 0;
 
+        public void CommencerTraitement()
+        {
 
+        }
+        public void AjouterVaisseauxArrive(Vaisseaux vaisseauxN, CentreTri centreActuel, CentreTri centreNouveau)
+        {
+            if (centreNouveau.Arrive.VerifFileMax())
+            {
+                CommencerTraitement();
+            }
+            centreNouveau.Arrive.AjouterFile(vaisseauxN);
+        }
+        public void TransfererVaisseauxArriveDepart(Vaisseaux vaisseauxN, CentreTri centreActuel, CentreTri centreSuivant)
+        {
 
-        public CentreTri Ancre { get { return ancre; } }
-
-
+            if (centreActuel.Depart.VerifFileMax())
+            {
+                while (!centreActuel.Depart.VerifFileVide())
+                {
+                    if (ancre.Suivant.Arrive.VerifFileMax())
+                    {
+                        TransfererVaisseauxArriveDepart(vaisseauxN, centreActuel, centreSuivant);
+                        break;
+                    }
+                    AjouterVaisseauxArrive(centreSuivant.Depart.SupprimerFile(), centreActuel, centreSuivant);
+                }
+            }
+            else
+            {
+                centreActuel.Depart.AjouterFile(centreSuivant.Arrive.SupprimerFile());
+            }
+        }
         public void AjouterCentre(CentreTri nouveau)
         {
             CentreTri actuel;
@@ -33,70 +60,29 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
                 while (actuel != null)
                 {
 
-                    if (nouveau.Cote >= actuel.Cote)
+                    if (ancre == actuel)
                     {
-                        temp = actuel;
-                        actuel = actuel.Suivant;
-                        if (actuel == null)
-                        {
-                            AjouterFin(nouveau);
-                            break;
-                        }
 
+                        AjouterDebut(nouveau);
+                        break;
                     }
                     else
                     {
-                        if (ancre == actuel)
-                        {
-
-                            AjouterDebut(nouveau);
-                            break;
-                        }
-                        else
-                        {
-                            nouveau.Suivant = actuel;
-                            nouveau.Precedant = actuel.Precedant;
-                            actuel.Precedant = nouveau;
-                            temp.Suivant = nouveau;
-                            cpt_noeud++;
-                            break;
-                        }
+                        nouveau.Suivant = actuel;
+                        nouveau.Precedant = actuel.Precedant;
+                        actuel.Precedant = nouveau;
+                        temp.Suivant = nouveau;
+                        cpt_noeud++;
+                        break;
                     }
                 }
             }
         }
-
-        public void RetierFin(CentreTri retrait)
-        {
-            CentreTri temp;
-            temp = retrait;
-            queud = temp;
-            queud.Suivant = null;
-
-            if (cpt_noeud == 0)
-            {
-                ancre = null;
-            }
-            cpt_noeud--;
-        }
-
-        public void RetirerDebut()
-        {
-            ancre = ancre.Suivant;
-            ancre.Precedant = null;
-            if (cpt_noeud == 0)
-            {
-                queud = ancre;
-            }
-            cpt_noeud--;
-        }
-
-
         public void AjouterFin(CentreTri nouveau)
         {
-            queud.Suivant = nouveau;
-            nouveau.Precedant = queud;
-            queud = nouveau;
+            Queu.Suivant = nouveau;
+            nouveau.Precedant = Queu;
+            Queu = nouveau;
             if (cpt_noeud == 0)
             {
                 ancre = nouveau;
@@ -109,7 +95,7 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             ancre = nouveau;
             if (cpt_noeud == 0)
             {
-                queud = ancre;
+                Queu = ancre;
             }
             cpt_noeud++;
         }

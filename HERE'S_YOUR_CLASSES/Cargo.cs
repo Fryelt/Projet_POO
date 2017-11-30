@@ -10,7 +10,7 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
     {
         public Cargo(int _capacite = 367) : base(_capacite)
         {
-            
+
         }
     }
 }

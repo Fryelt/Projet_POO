@@ -9,8 +9,8 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
     class Pile
     {
 
-        protected Materiaux ancre;
-        protected int capaciteMax, capaciteActuelle;
+        private Materiaux ancre;
+        private int capaciteMax, capaciteActuelle;
 
         public Pile(int tailleMaxP)
         {

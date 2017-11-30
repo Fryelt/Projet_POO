@@ -9,20 +9,15 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
     class CentreTri
     {
         private char Categ;
-        CentreTri ancre = null;
-        CentreTri Queu = null;
-        int cpt_noeud = 0;
-        private CentreTri Suivant;
-        private CentreTri Precedant;
-        private Plutonium PilePlutonium;
-        private Uranium PileUranium;
-        private TerresContaminees PileTerresContaminees;
-        private CombustiblesFossiles PileCombustiblesFossiles;
-        private MetauxLourds PileMetauxLourds;
-        private File Depart;
-        private File Arrive;
-
-
+        private CentreTri suivant;
+        private CentreTri precedant;
+        private Pile pilePlutonium;
+        private Pile pileUranium;
+        private Pile pileTerresContaminees;
+        private Pile pileCombustiblesFossiles;
+        private Pile pileMetauxLourds;
+        private File depart;
+        private File arrive;
         public CentreTri(int numerocentre)
         {
             if (numerocentre % 2 == 0)
@@ -36,13 +31,13 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             {
                 if (numerocentre % 5 == 0)
                     CreationCentre('I', 3067, 0, 0, 0, 2658, 45, 45);
-                else if (verifPremier(numerocentre))
+                else if (VerifPremier(numerocentre))
                     CreationCentre('I', 0, 2456, 561, 0, 0, 45, 45);
                 else
                     CreationCentre('I', 3067, 2456, 561, 8234, 2658, 45, 45);
             }
         }
-        public bool verifPremier(int n)
+        public bool VerifPremier(int n)
         {
             if (n <= 1) return false;
             if (n <= 3) return true;
@@ -58,129 +53,58 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
         public void CreationCentre(char _Categ, int _PilePlutonium, int _PileUranium, int _PileMetauxLourds, int _PileCombustiblesFossiles, int _PileTerresContaminees, int _Depart, int _Arrivee)
         {
             Categ = _Categ;
-            PilePlutonium = new Plutonium(_PilePlutonium);
-            PileUranium = new Uranium(_PileUranium);
-            PileMetauxLourds = new MetauxLourds(_PileMetauxLourds);
-            PileCombustiblesFossiles = new CombustiblesFossiles(_PileCombustiblesFossiles);
-            PileTerresContaminees = new TerresContaminees(_PileTerresContaminees);
-            Depart = new File(_Depart);
-            Arrive = new File(_Arrivee);
+            pilePlutonium = new Pile(_PilePlutonium);
+            pileUranium = new Pile(_PileUranium);
+            pileMetauxLourds = new Pile(_PileMetauxLourds);
+            pileCombustiblesFossiles = new Pile(_PileCombustiblesFossiles);
+            pileTerresContaminees = new Pile(_PileTerresContaminees);
+            depart = new File(_Depart);
+            arrive = new File(_Arrivee);
         }
-        public void CommencerTraitement()
+        public CentreTri Suivant
         {
-
+            get { return suivant; }
+            set { suivant = value; }
         }
-        public void AjouterVaisseauxArrive(Vaisseaux vaisseaux)
+        public CentreTri Precedant
         {
-            if (Arrive.VerifFileMax())
-            {
-                CommencerTraitement();
-            }
-            Arrive.AjouterFile(vaisseaux);
+            get { return precedant; }
+            set { precedant = value; }
         }
-        public void TransfrerVaisseauxArriveDepart()
+        public File Depart
         {
-
-            if (Depart.VerifFileMax())
-            {
-                while (!Depart.VerifFileVide())
-                {
-                    if (ancre.Suivant.Arrive.VerifFileMax())
-                    {
-                        ancre.Suivant.TransfrerVaisseauxArriveDepart();
-                        break;
-                    }
-                    ancre.Suivant.AjouterVaisseauxArrive(Depart.SupprimerFile());
-                }
-            }
-            else
-            {
-                Depart.AjouterFile(Arrive.SupprimerFile());
-            }
+            get { return depart; }
+            set { depart = value; }
         }
-
-
-        public void AjouterCentre(CentreTri nouveau)
+        public File Arrive
         {
-            CentreTri actuel;
-            CentreTri temp = null;
-            actuel = ancre;
-
-            if (actuel == null)
-            {
-
-                AjouterDebut(nouveau);
-            }
-            else
-            {
-                while (actuel != null)
-                {
-
-                    if (ancre == actuel)
-                    {
-
-                        AjouterDebut(nouveau);
-                        break;
-                    }
-                    else
-                    {
-                        nouveau.Suivant = actuel;
-                        nouveau.Precedant = actuel.Precedant;
-                        actuel.Precedant = nouveau;
-                        temp.Suivant = nouveau;
-                        cpt_noeud++;
-                        break;
-                    }
-                }
-            }
+            get { return arrive; }
+            set { arrive = value; }
         }
-
-        public void RetierFin(CentreTri retrait)
+        public Pile PilePlutonium
         {
-            CentreTri temp;
-            temp = retrait;
-            Queu = temp;
-            Queu.Suivant = null;
-
-            if (cpt_noeud == 0)
-            {
-                ancre = null;
-            }
-            cpt_noeud--;
+            get { return pilePlutonium; }
+            set { pilePlutonium = value; }
         }
-
-        public void RetirerDebut()
+        public Pile PileUranium
         {
-            ancre = ancre.Suivant;
-            ancre.Precedant = null;
-            if (cpt_noeud == 0)
-            {
-                Queu = ancre;
-            }
-            cpt_noeud--;
+            get { return pileUranium; }
+            set { pileUranium = value; }
         }
-
-
-        public void AjouterFin(CentreTri nouveau)
+        public Pile PileTerresContaminees
         {
-            Queu.Suivant = nouveau;
-            nouveau.Precedant = Queu;
-            Queu = nouveau;
-            if (cpt_noeud == 0)
-            {
-                ancre = nouveau;
-            }
-            cpt_noeud++;
+            get { return pileTerresContaminees; }
+            set { pileTerresContaminees = value; }
         }
-        public void AjouterDebut(CentreTri nouveau)
+        public Pile PileCombustiblesFossiles
         {
-            nouveau.Suivant = ancre;
-            ancre = nouveau;
-            if (cpt_noeud == 0)
-            {
-                Queu = ancre;
-            }
-            cpt_noeud++;
+            get { return pileCombustiblesFossiles; }
+            set { pileCombustiblesFossiles = value; }
+        }
+        public Pile PileMetauxLourds
+        {
+            get { return pileMetauxLourds; }
+            set { pileMetauxLourds = value; }
         }
     }
 }
