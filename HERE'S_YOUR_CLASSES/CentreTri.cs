@@ -14,41 +14,58 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
         int cpt_noeud = 0;
         private CentreTri Suivant;
         private CentreTri Precedant;
-        private Pile Pl;
-        private Pile U;
-        private Pile TC;
-        private Pile CB;
-        private Pile ML;
+        private Plutonium PilePlutonium;
+        private Uranium PileUranium;
+        private TerresContaminees PileTerresContaminees;
+        private CombustiblesFossiles PileCombustiblesFossiles;
+        private MetauxLourds PileMetauxLourds;
         private File Depart;
         private File Arrive;
 
 
-        CentreTri(int numerocentre)
+        public CentreTri(int numerocentre)
         {
-            if (numerocentre % 2 >= 0)
+            if (numerocentre % 2 == 0)
             {
-                Categ = 'P';
-                Pl = new Pile(1003);
-                U = new Pile(857);
-                ML = new Pile(3456);
-                CB = new Pile(639);
-                TC = new Pile(457);
-                Depart = new File(30);
-                Arrive = new File(30);
+                if (numerocentre % 5 == 0)
+                    CreationCentre('P', 1003, 0, 0, 0, 457, 30, 30);
+                else
+                    CreationCentre('P', 1003, 857, 3456, 639, 457, 30, 30);
             }
             else
             {
-                Categ = 'I';
-                Pl = new Pile(3067);
-                U = new Pile(2456);
-                ML = new Pile(561);
-                CB = new Pile(8234);
-                TC = new Pile(2658);
-                Depart = new File(45);
-                Arrive = new File(45);
+                if (numerocentre % 5 == 0)
+                    CreationCentre('I', 3067, 0, 0, 0, 2658, 45, 45);
+                else if (verifPremier(numerocentre))
+                    CreationCentre('I', 0, 2456, 561, 0, 0, 45, 45);
+                else
+                    CreationCentre('I', 3067, 2456, 561, 8234, 2658, 45, 45);
             }
         }
+        public bool verifPremier(int n)
+        {
+            if (n <= 1) return false;
+            if (n <= 3) return true;
 
+            if (n % 2 == 0 || n % 3 == 0) return false;
+
+            for (int i = 5; i * i <= n; i = i + 6)
+                if (n % i == 0 || n % (i + 2) == 0)
+                    return false;
+
+            return true;
+        }
+        public void CreationCentre(char _Categ, int _PilePlutonium, int _PileUranium, int _PileMetauxLourds, int _PileCombustiblesFossiles, int _PileTerresContaminees, int _Depart, int _Arrivee)
+        {
+            Categ = _Categ;
+            PilePlutonium = new Plutonium(_PilePlutonium);
+            PileUranium = new Uranium(_PileUranium);
+            PileMetauxLourds = new MetauxLourds(_PileMetauxLourds);
+            PileCombustiblesFossiles = new CombustiblesFossiles(_PileCombustiblesFossiles);
+            PileTerresContaminees = new TerresContaminees(_PileTerresContaminees);
+            Depart = new File(_Depart);
+            Arrive = new File(_Arrivee);
+        }
         public void CommencerTraitement()
         {
 
