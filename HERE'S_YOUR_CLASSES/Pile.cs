@@ -10,12 +10,13 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
     {
 
         private Materiaux ancre;
-        private int capaciteMax, capaciteActuelle;
+        private int capaciteMax, capaciteActuelle, nbrMateriaux;
 
         public Pile(int tailleMaxP)
         {
             capaciteMax = tailleMaxP;
             capaciteActuelle = 0;
+            nbrMateriaux = 0;
             ancre = null;
         }
         public bool VerifPileMax()
@@ -31,43 +32,47 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             return true;
         }
 
-        public void AjouterPile(Materiaux objet)
+        public bool AjouterPile(Materiaux objet)
         {
             int qutRestante;
             Materiaux objetN;
-            while (objet.TailleMateriaux != 0)
+            if ((capaciteActuelle + objet.TailleMateriaux) <= capaciteMax)
             {
-                if ((capaciteActuelle + objet.TailleMateriaux) <= capaciteMax)
-                {
-                    objet.Suivant = ancre;
-                    ancre = objet;
-                    capaciteActuelle += objet.TailleMateriaux;
-                    objet.TailleMateriaux = 0;
-                }
-                else
-                {
-                    qutRestante = capaciteMax - capaciteActuelle;
-                    objet.TailleMateriaux -= qutRestante;
-                    objetN = objet.Creation(qutRestante);
-
-                    objetN.Suivant = ancre;
-                    ancre = objetN;
-                    capaciteActuelle = capaciteMax;
-                    //VIDER
-                }
-            }
-        }
-        public void SupprimerPile()
-        {
-            if (VerifPileVide())
-            {
-                capaciteActuelle =- ancre.TailleMateriaux;
-                ancre = ancre.Suivant;
+                objetN = objet;
+                objetN.Suivant = ancre;
+                ancre = objetN;
+                capaciteActuelle += objetN.TailleMateriaux;
+                nbrMateriaux++;
+                return false;
             }
             else
             {
-                //TO THINK ABOUT
+                qutRestante = capaciteMax - capaciteActuelle;
+                objet.TailleMateriaux -= qutRestante;
+                objetN = objet.Creation(qutRestante);
+
+                objetN.Suivant = ancre;
+                ancre = objetN;
+                capaciteActuelle = capaciteMax;
+                nbrMateriaux++;
+                return true;
             }
+        }
+        public Materiaux SupprimerPile()
+        {
+            Materiaux materiel = null;
+            if (!VerifPileVide())
+            {
+                materiel = ancre.Creation(ancre.TailleMateriaux);
+                capaciteActuelle -= ancre.TailleMateriaux;
+                ancre = ancre.Suivant;
+                nbrMateriaux--;
+            }
+            return materiel; 
+        }
+        public int NbrMateriaux
+        {
+            get { return nbrMateriaux; }
         }
     }
 }

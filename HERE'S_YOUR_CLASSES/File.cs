@@ -38,10 +38,6 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
                 queue = vaisseau;
                 nbr_vaisseaux++;
             }
-            else
-            {
-                //LA FILE A ATTEINT LE MAX
-            }
         }
 
         public Vaisseaux SupprimerFile()
@@ -49,15 +45,19 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             Vaisseaux vaisseauT = null;
             if (!VerifFileVide())
             {
-                vaisseauT = new Vaisseaux(queue.CapaciteTotale);
+                vaisseauT = queue;
                 queue = queue.Precedent;
                 nbr_vaisseaux--;
             }
-            else
-            {
-                //IL N'Y A RIEN
-            }
             return vaisseauT;
+        }
+        public int NbrVaisseaux
+        {
+            get { return nbr_vaisseaux; }
+        }
+        public Vaisseaux Queue
+        {
+            get { return queue; }
         }
     }
 }

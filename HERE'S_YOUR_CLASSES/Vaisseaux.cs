@@ -31,10 +31,18 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             set { capacite = value; }
         }
 
-        public void AjouterMateriaux(Materiaux ajoutM)
+        public int AjouterMateriaux(Materiaux ajoutM)
         {
-            capacite += ajoutM.TailleMateriaux;
+            int qutRestante = 0;
             pileMateriaux.AjouterPile(ajoutM);
+            if ((ajoutM.TailleMateriaux + capacite) <= capaciteTotale)
+                capacite += ajoutM.TailleMateriaux;
+            else
+            {
+                qutRestante = ajoutM.TailleMateriaux;
+                capaciteTotale = capacite;
+            }
+            return qutRestante;
         }
 
         public Vaisseaux Precedent
