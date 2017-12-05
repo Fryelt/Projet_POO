@@ -8,10 +8,7 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
 {
     class TerresContaminees : Materiaux
     {
-        public TerresContaminees(int _capacite) : base(_capacite)
-        {
-
-        }
+        public TerresContaminees(int _capacite) : base(_capacite) { }
         public override Materiaux Creation(int tailleN)
         {
             return new TerresContaminees(tailleN);

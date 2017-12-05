@@ -34,14 +34,11 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
         public int AjouterMateriaux(Materiaux ajoutM)
         {
             int qutRestante = 0;
-            pileMateriaux.AjouterPile(ajoutM);
-            if ((ajoutM.TailleMateriaux + capacite) <= capaciteTotale)
-                capacite += ajoutM.TailleMateriaux;
-            else
+            if (pileMateriaux.AjouterPile(ajoutM))
             {
                 qutRestante = ajoutM.TailleMateriaux;
-                capaciteTotale = capacite;
             }
+            capacite = PileMateriaux.CapaciteActuelle;
             return qutRestante;
         }
 

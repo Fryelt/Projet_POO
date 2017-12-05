@@ -36,7 +36,11 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
         {
             int qutRestante;
             Materiaux objetN;
-            if ((capaciteActuelle + objet.TailleMateriaux) <= capaciteMax)
+            if (objet.TailleMateriaux == 0)
+            {
+                return false;
+            }
+            else if ((capaciteActuelle + objet.TailleMateriaux) <= capaciteMax)
             {
                 objetN = objet;
                 objetN.Suivant = ancre;
@@ -73,6 +77,14 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
         public int NbrMateriaux
         {
             get { return nbrMateriaux; }
+        }
+        public int CapaciteActuelle
+        {
+            get { return capaciteActuelle; }
+        }
+        public int CapaciteMax
+        {
+            get { return capaciteMax; }
         }
     }
 }

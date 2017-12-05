@@ -61,6 +61,104 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             depart = new File(_Depart);
             arrive = new File(_Arrivee);
         }
+        public void AjouterVaisseauxArrive(Vaisseaux vaisseauxN)
+        {
+            //À PENSER SI LA FILE DÉPART PRÉCÉDENTE EST VIDE
+            if (Arrive.VerifFileMax())
+            {
+                CommencerTraitement();
+            }
+            Arrive.AjouterFile(vaisseauxN);
+        }
+        public void TransfertVaisseauxDepart(Pile transfert, Materiaux objetRestant)
+        {
+            while(objetRestant != null)
+            {
+                if (Depart.VerifFileVide())
+                    break;
+                else
+                {
+                    objetRestant = objetRestant.Creation(Depart.Queue.AjouterMateriaux(transfert.SupprimerPile()));
+                    if (Depart.Queue.CapaciteTotale == Depart.Queue.Capacite)
+                    {
+                        Suivant.AjouterVaisseauxArrive(Depart.SupprimerFile());
+                        transfert.AjouterPile(objetRestant);
+                    }
+                }
+            }
+        }
+
+        public void CommencerTraitement()
+        {
+            Vaisseaux vaisseauT, vaisseauT2;
+            Materiaux materielT, materielN;
+            int nbrVaisseaux, nbrMateriaux;
+
+            vaisseauT2 = null;
+
+            nbrVaisseaux = Arrive.NbrVaisseaux;
+            for (int ind = 0; ind < nbrVaisseaux; ind++)
+            {
+                if (!Depart.VerifFileMax())
+                {
+                    vaisseauT = Arrive.SupprimerFile();
+                    nbrMateriaux = vaisseauT.PileMateriaux.NbrMateriaux;
+                    for (int ind2 = 0; ind2 < nbrMateriaux; ind2++)
+                    {
+                        materielT = vaisseauT.PileMateriaux.SupprimerPile();
+                        vaisseauT.miseAJourPile(-materielT.TailleMateriaux);
+                        switch (materielT.GetType().Name)
+                        {
+                            //case "Plutonium":
+                            //    while (PileTerresContaminees.AjouterPile(materielT))
+                            //    {
+                            //        TransfertVaisseauxDepart(PileTerresContaminees, new TerresContaminees(0));
+                            //    }
+                            //    break;
+                            //case "Uranium":
+                            //    while (PileTerresContaminees.AjouterPile(materielT))
+                            //    {
+                            //        TransfertVaisseauxDepart(PileTerresContaminees, new TerresContaminees(0));
+                            //    }
+                            //    break;
+                            //case "CombustiblesFossiles":
+                            //    while (PileTerresContaminees.AjouterPile(materielT))
+                            //    {
+                            //        TransfertVaisseauxDepart(PileTerresContaminees, new TerresContaminees(0));
+                            //    }
+                            //    break;
+                            //case "MetauxLourds":
+                            //    while (PileTerresContaminees.AjouterPile(materielT))
+                            //    {
+                            //        TransfertVaisseauxDepart(PileTerresContaminees, new TerresContaminees(0));
+                            //    }
+                            //    break;
+                            case "TerresContaminees":
+                                if (PileTerresContaminees.CapaciteMax == 0)
+                                {
+                                    //??
+                                    TransfertVaisseauxDepart(PileTerresContaminees, new TerresContaminees(0));
+                                }
+                                else
+                                {
+                                    while (PileTerresContaminees.AjouterPile(materielT))
+                                    {
+                                        TransfertVaisseauxDepart(PileTerresContaminees, new TerresContaminees(0));
+                                    }
+                                    if (!Depart.VerifFileMax())
+                                        Depart.AjouterFile(vaisseauT);
+                                    else
+                                        break;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+
+        }
         public CentreTri Suivant
         {
             get { return suivant; }

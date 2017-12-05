@@ -29,7 +29,7 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
                 return false;
             return true;
         }
-
+        //??
         public void AjouterFile(Vaisseaux vaisseau)
         {
             if (!VerifFileMax())
@@ -39,7 +39,7 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
                 nbr_vaisseaux++;
             }
         }
-
+        //??
         public Vaisseaux SupprimerFile()
         {
             Vaisseaux vaisseauT = null;
