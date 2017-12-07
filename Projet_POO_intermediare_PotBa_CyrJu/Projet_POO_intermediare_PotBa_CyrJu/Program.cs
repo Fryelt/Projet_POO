@@ -18,7 +18,7 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             int tailleListeCentres, nbrVaisseaux;
 
             tailleListeCentres = 10;
-            nbrVaisseaux = 100;
+            nbrVaisseaux = 250;
             //Ajout centres
             for (int ind = 1; ind <= tailleListeCentres; ind++)
             {
@@ -44,17 +44,7 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             {
                 Curseur.AjouterVaisseauxArrive(fileDebut.SupprimerFile());
             }
-            while (Curseur != null)
-            {
-                if (Curseur.VaisseauxRestants())
-                {
-                    Curseur = Curseur.Suivant;
-                }
-                else
-                {
-                    break;
-                }
-            }
+            Curseur.VaisseauxRestants();
             Console.WriteLine("Job's done");
             Console.ReadLine();
         }

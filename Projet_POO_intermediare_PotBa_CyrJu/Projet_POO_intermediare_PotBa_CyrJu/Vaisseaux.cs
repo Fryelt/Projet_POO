@@ -11,6 +11,16 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
         protected int capaciteTotale, capacite;
         protected Pile pileMateriaux;
         protected Vaisseaux prochain = null;
+        public Vaisseaux Prochain
+        {
+            get { return prochain; }
+            set { prochain = value; }
+        }
+        public Pile PileMateriaux
+        {
+            get { return pileMateriaux; }
+            set { pileMateriaux = value; }
+        }
 
         public Vaisseaux(int _capacite)
         {
@@ -44,15 +54,6 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             return qutRestante;
         }
 
-        public Vaisseaux Prochain
-        {
-            get { return prochain; }
-            set { prochain = value; }
-        }
-        public Pile PileMateriaux
-        {
-            get { return pileMateriaux; }
-            set { pileMateriaux = value; }
-        }
+       
     }
 }

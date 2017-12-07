@@ -11,6 +11,11 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
         private CentreTri ancre = null;
         private CentreTri Queu = null;
         private int cpt_noeud = 0;
+        public CentreTri Ancre
+        {
+            get { return ancre; }
+        }
+
         public void AjouterCentre(CentreTri nouveau)
         {
             CentreTri actuel;
@@ -38,9 +43,6 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             }
             cpt_noeud++;
         }
-        public CentreTri Ancre
-        {
-            get { return ancre; }
-        }
+       
     }
 }

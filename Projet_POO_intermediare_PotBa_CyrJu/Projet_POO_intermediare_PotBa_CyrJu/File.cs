@@ -10,24 +10,32 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
     {
         protected Vaisseaux queue, ancre;
         protected int tailleMax, nbr_vaisseaux;
+        public int NbrVaisseaux
+        {
+            get { return nbr_vaisseaux; }
+        }
+        public Vaisseaux Ancre
+        {
+            get { return ancre; }
+        }
 
-        public File(int tailleMaxP)
+        public File(int tailleMaxP) //Creation des Files avec leur taille max en Parametre
         {
             tailleMax = tailleMaxP;
             queue = ancre = null;
             nbr_vaisseaux = 0;
         }
-        public bool VerifFileMax()
+        public bool VerifFileMax() // Fonction Verification Max de la file 
         {
             if (nbr_vaisseaux == tailleMax)
                 return true;
             return false;
         }
-        public bool VerifFileVide()
+        public bool VerifFileVide() // Fonction Verification si la vide de la file
         {
             return (nbr_vaisseaux == 0);
         }
-        public void AjouterFile(Vaisseaux vaisseau)
+        public void AjouterFile(Vaisseaux vaisseau) // ajout simplle dans la file 
         {
             if (VerifFileVide())
             {
@@ -41,7 +49,7 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
                 nbr_vaisseaux++;
             }
         }
-        public Vaisseaux SupprimerFile()
+        public Vaisseaux SupprimerFile() // retrait simple de la file 
         {
             Vaisseaux vaisseauT = null;
             if (!VerifFileVide())
@@ -52,13 +60,6 @@ namespace Projet_POO_intermediare_PotBa_CyrJu
             }
             return vaisseauT;
         }
-        public int NbrVaisseaux
-        {
-            get { return nbr_vaisseaux; }
-        }
-        public Vaisseaux Ancre
-        {
-            get { return ancre; }
-        }
+      
     }
 }
