@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Projet_POO_intermediare_PotBa_CyrJu
 {
-    class Program
+    interface IMateriaux
     {
-        static void Main(string[] args)
-        {
-        }
+        int tempsChargement { get; set; }
+        string nomMateriaux { get; set; }
+        IMateriaux suivant { get; set; }
     }
 }

@@ -6,15 +6,30 @@ using System.Threading.Tasks;
 
 namespace Projet_POO_intermediare_PotBa_CyrJu
 {
-    class CombustiblesFossiles : Materiaux
+    class CombustiblesFossiles : IMateriaux
     {
-        public CombustiblesFossiles(int _capacite) : base (_capacite)
+        private int _tempsChargement = 0;
+        private string _nomMateriaux = null;
+        private IMateriaux _suivant = null;
+        public CombustiblesFossiles()
         {
 
         }
-        public override Materiaux Creation(int tailleN)
+
+        public int tempsChargement
         {
-            return new CombustiblesFossiles(tailleN);
+            get { return _tempsChargement; }
+            set { _tempsChargement = value; }
+        }
+        public string nomMateriaux
+        {
+            get { return _nomMateriaux; }
+            set { _nomMateriaux = value; }
+        }
+        public IMateriaux suivant
+        {
+            get { return _suivant; }
+            set { _suivant = value; }
         }
     }
 }

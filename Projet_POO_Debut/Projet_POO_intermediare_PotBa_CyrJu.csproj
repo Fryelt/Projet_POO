@@ -48,19 +48,14 @@
     <Compile Include="File.cs" />
     <Compile Include="Leger.cs" />
     <Compile Include="Liste.cs" />
-<<<<<<< HEAD
     <Compile Include="MétauxLourds.cs" />
-=======
-    <Compile Include="IMateriaux.cs" />
-    <Compile Include="MetauxLourds.cs" />
->>>>>>> Bajamin
     <Compile Include="Pile.cs" />
     <Compile Include="Plutonium.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TerresContaminees.cs" />
     <Compile Include="Uranium.cs" />
-    <Compile Include="IVaisseaux.cs" />
+    <Compile Include="Vaisseaux.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
